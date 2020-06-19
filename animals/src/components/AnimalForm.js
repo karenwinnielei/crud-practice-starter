@@ -7,7 +7,7 @@ const initialAnimal = {
   classification: { species: '' },
 };
 
-export default function AnimalForm({ animals, updateAnimals }) {
+export default function AnimalForm({ animals, updateAnimals, setUpdate }) {
   const [updating, setUpdating] = useState(false);
   const [animalToUpdate, setAnimalToUpdate] = useState(initialAnimal);
 
@@ -26,8 +26,8 @@ export default function AnimalForm({ animals, updateAnimals }) {
       .then((res) => {
         console.log(res.data);
         updateAnimals(animals)
-        updating(true)
-        setUpdating(false)
+        // updating(true) setUpdate modifies the prop from animal dashboard
+        setUpdate(true)
       })
       .catch((err) => console.log(`update error: ${err.response}`));
   };

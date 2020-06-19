@@ -23,7 +23,7 @@ export default function AnimalDashboard() {
 
   return (
     <div className='dash'>
-      <AnimalForm animals={animals} updateAnimals={setAnimals} />
+      <AnimalForm animals={animals} updateAnimals={setAnimals} setUpdate={setUpdate} />
       <AnimalList animals={animals} />
     </div>
   );
