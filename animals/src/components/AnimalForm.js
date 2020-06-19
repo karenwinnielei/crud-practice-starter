@@ -21,6 +21,15 @@ export default function AnimalForm({ animals, updateAnimals }) {
     // How can we update the animal information?
     // Where can we get the ID?
     // Where is the information stored?
+    axiosWithAuth()
+      .put(`animals/${animalToUpdate.id}`, animalToUpdate)
+      .then((res) => {
+        console.log(res.data);
+        updateAnimals(animals)
+        updating(true)
+        setUpdating(false)
+      })
+      .catch((err) => console.log(`update error: ${err.response}`));
   };
 
   const deleteAnimal = (animal) => {
@@ -32,7 +41,7 @@ export default function AnimalForm({ animals, updateAnimals }) {
         updateAnimals(
           animals.filter((item) => item.id !== animal.id),
         );
-        setUpdating(false)
+        setUpdating(false);
       })
       .catch((err) => console.log(`delete error: ${err.response}`));
   };
